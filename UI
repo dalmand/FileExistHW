@@ -36,6 +36,8 @@ public class UI {
 				
 				String secondFile = input.nextLine();
 				
+				
+				// change if(secondFile.equals(newFile))
 				if(secondFile == newFile) {
 					
 					do {
@@ -46,6 +48,7 @@ public class UI {
 				}
 				
 		
+		//change to }while(!fileExists);
 		}while(fileExists == false);
 	}
 
