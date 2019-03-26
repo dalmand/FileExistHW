@@ -9,17 +9,21 @@ import java.io.PrintWriter;
 
 public class UI {
 
+	//You will need to throw FileMissingException, your customized exception
 	public static void main(String[] args) throws FileNotFoundException{
 		
 		
-		boolean fileExists = false;
+		
 		UI user = new UI();
+		boolean fileExists = false;
 		Business business = new Business();
 		Scanner input = new Scanner(System.in);
+		//You will need to declare an ArrayList
+		//ArrayList<String> list ; 
 		
 		do {
 			
-			
+			//you may want to try{} catch(FileMissingException ex)... here. 
 
 				//prompt user to type in file name
 				System.out.println("Please enter the file name you would like to read.");
