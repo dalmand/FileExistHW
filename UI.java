@@ -9,26 +9,28 @@ import java.io.PrintWriter;
 
 public class UI {
 
-	//You will need to throw FileMissingException, your customized exception
-	public static void main(String[] args) throws FileNotFoundException{
-		
+	public static void main(String[] args) throws FileMissingException{
 		
 		
 		UI user = new UI();
 		boolean fileExists = false;
 		Business business = new Business();
 		Scanner input = new Scanner(System.in);
-		//You will need to declare an ArrayList
-		//ArrayList<String> list ; 
+		ArrayList<String> list = new ArrayList<>();
+
 		
 		do {
 			
-			//you may want to try{} catch(FileMissingException ex)... here. 
+			System.out.println("Please enter the file name you would like to read.");
+			String newFile = input.next();
 
+			try {
 				//prompt user to type in file name
-				System.out.println("Please enter the file name you would like to read.");
-				String newFile = input.next();
-				ArrayList<String> list = business.readFile(newFile);
+				list = business.readFile(newFile);
+			}
+			catch(FileMissingException ex) {
+				System.out.println("File " + newFile + " could not be found");
+			}
 			
 				user.printList(list);
 				
@@ -38,7 +40,7 @@ public class UI {
 				
 				System.out.println("Please enter the name of the new file to write");
 				
-				String secondFile = input.nextLine();
+				String secondFile = input.next();
 				
 				if(secondFile.equals(newFile)) {
 					
@@ -50,7 +52,16 @@ public class UI {
 			
 				}
 
+				try {
 				business.writeFile(secondFile, list);
+				}
+				catch(FileMissingException ae) {
+					System.out.println("File " + secondFile +  " could not be written");
+				}
+	
+				user.reverseList(list);
+				
+				user.printList(list);
 
 		
 		}while(fileExists);

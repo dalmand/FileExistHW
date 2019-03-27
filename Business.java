@@ -33,7 +33,7 @@ public class Business {
 		//display custom message if text file does not exist
 		catch(FileNotFoundException ex) {
 			
-		throw new FileMissingException("File " + fileName + " could not be found. Please select another file.");
+		throw new FileMissingException();
 		
 		
 			
@@ -46,12 +46,12 @@ public class Business {
 
 		try {
 			PrintWriter output = new PrintWriter(fileName);
-			output.println(lines);
+			output.print(lines);
 			output.close();
 
 		}
 		catch(FileNotFoundException ex) {
-			throw new FileMissingException("File " + fileName + "could not be written"); 
+			throw new FileMissingException();
 		}
 		
 		
